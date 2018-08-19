@@ -1,0 +1,39 @@
+[general]
+accounts = personal, nested
+ui = ttyui
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+status_backend = sqlite
+maxage = 30
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/mail/personal
+
+[Repository personal-remote]
+type = Gmail
+sslcacertfile = ~/ca-certificates.pem
+remoteuser = pcowans@gmail.com 
+remotepass = <reroked>
+realdelete = no
+folderfilter = lambda folder: folder in ['INBOX', '[Google Mail]/Sent Mail', '[Google Mail]/All Mail']
+
+[Account nested]
+localrepository = nested-local
+remoterepository = nested-remote
+status_backend = sqlite
+maxage = 30
+
+[Repository nested-local]
+type = Maildir
+localfolders = ~/mail/nested
+
+[Repository nested-remote]
+type = Gmail
+sslcacertfile = ~/ca-certificates.pem
+remoteuser = phil@nested.com
+remotepass = <revoked>
+realdelete = no
+folderfilter = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/All Mail']
